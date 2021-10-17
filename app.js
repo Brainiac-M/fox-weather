@@ -81,19 +81,21 @@ function celsiusToFahrenheit(temperature){
     return (temperature * 9/5) + 32;
 }
 
-
 //  When User clicks on Temperature Element
-tempElement.addEventListener('click', function(){
+tempElement.addEventListener("click", function(){
     if(weather.temperature.value == undefined) return;
 
-    if(weather.temperature.unit == 'celsius'){
-        let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
-        fahrenheit = Math.floor(fahrenheit);
-    }else{
-        tempElement.innerHTML = `${weather.temperature.value}º<span>C</span>`; 
-        weather.temperature.unit == 'celsius';
-    }
-})
+        if(weather.temperature.unit === "celsius"){
+            let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
+            fahrenheit = Math.floor(fahrenheit);
+            tempElement.innerHTML = `${fahrenheit}º<span>F</span>`; 
+            weather.temperature.unit = "fahrenheit";
+            }
+        else{
+            tempElement.innerHTML = `${weather.temperature.value}º<span>C</span>`; 
+            weather.temperature.unit = "celsius";
+        }
+});
 
 //background image should change based on the 
 //weather state. Images for winter, summer, 
