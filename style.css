@@ -10,11 +10,12 @@ body{
     height: 100vh;
     background:url(img/11.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    /*background-size: cover;
     background-position: bottom center;
-    background-attachment: fixed;
+    background-attachment: fixed;*/
     overflow: hidden;
     min-width: 100vw;
+    object-fit: cover;
 }
 
 .container{

@@ -30,47 +30,24 @@ if('geolocation' in navigator){
 
 
 //Change Background
-function changeBackground(iconId){
-    if(iconId){
-        if(iconId == '10n' || '10d'){
-            background = '11';
-        }else if(iconId == '13n' || '13d'){
-            background = '4';
-            document.body.style.backgroundPosition = 'bottom center';
-        }else if(iconId == '09n' || '09d'){
-            background = '55';
-            document.body.style.backgroundPosition = 'center';
-        }else if(iconId == '50n' || '50d'){
-            background = '9';
-        }else if(iconId == '11n' || '11d'){
-            background = '8';
-            document.body.style.backgroundPosition = 'center';
-        } else if(iconId == '04n' || '04d'){
-            background = '77';
-            document.body.style.backgroundPosition = 'center';
-        } else if(iconId == '02n' || '03n'){
-            background = '33';
-            document.body.style.backgroundPosition = 'top left';
-        } else if(iconId == '02d' || '03d'){
-            background = '7';
-            document.body.style.backgroundPosition = 'top left';
-        } else if(iconId == '01d'){
-            background = '2';
-            document.body.style.backgroundPosition = 'top left';
-        } else if(iconId == '01n'){
-            background = '88';
-            document.body.style.backgroundPosition = 'center';
-        } else{
-            background = '11';
+function changeBackground(description){
+    const pexelKey = '563492ad6f91700001000001f02a163ae3b4454bb48b70c60313943d';
+    let url =  `https://api.pexels.com/v1/search?query=${description}`;
+    
+    fetch(url, {
+        headers: {
+            'Authorization': pexelKey
         }
-
-        document.body.style.background = `url(img/${background}.jpg)`;
-        document.body.style.backgroundRepeat =  'no-repeat';
-        document.body.style.backgroundSize = 'cover';
-        document.body.style.backgroundAttachment =  'fixed';
-        document.body.style.overflow =  'hidden';
-        
-    }
+    })
+    .then(res => res.json().then(data => {
+        console.log(data);
+        const i = Math.floor(Math.random() * 15);
+        console.log(i);
+        const source = data.photos[i].src.original;
+        document.body.style.background = `url(${source})`;
+    })
+    .catch(error => console.log(error)))
+    .catch(error => console.log(error))
 }
 
 //Set User Position
@@ -109,7 +86,7 @@ function getWeather(latitude, longitude){
         displayWeather(); 
     })
     .then(function() {
-           changeBackground(weather.iconId); 
+           changeBackground(weather.description); 
     })
 
     
