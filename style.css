@@ -8,12 +8,13 @@ box-sizing: border-box;
 
 body{
     height: 100vh;
-    background:url(img/1.jpg);
+    background:url(img/11.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom center;
     background-attachment: fixed;
     overflow: hidden;
+    min-width: 100vw;
 }
 
 .container{
