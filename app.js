@@ -43,7 +43,7 @@ function changeBackground(description){
         console.log(data);
         const i = Math.floor(Math.random() * 15);
         console.log(i);
-        const source = data.photos[i].src.original;
+        const source = data.photos[i].src.large;
         document.body.style.background = `url(${source})`;
     })
     .catch(error => console.log(error)))
@@ -123,7 +123,7 @@ tempElement.addEventListener("click", function(){
 
 //background image should change based on the 
 //weather state. Images for winter, summer, 
-//clear sky and windy should be toggled.
-//Let users search for cities and get weather results of various cities.
-// Allow dark mode toggle
-//Add glassmorphism
+//clear sky and windy should be toggled. ==== Done
+//Let users search for cities and get weather results of various cities. === Not Done
+// Allow dark mode toggle === Not Done
+//Add glassmorphism === Done
